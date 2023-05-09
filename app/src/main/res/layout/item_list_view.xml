@@ -36,6 +36,7 @@
             android:background="@drawable/rounded_corner" />
 
         <TextView
+            android:fontFamily="@font/roboto_blackitalic"
             android:id="@+id/display_note_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

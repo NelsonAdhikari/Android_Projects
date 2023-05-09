@@ -4,10 +4,12 @@ package com.aadim.classroom.notebook;
         import androidx.activity.result.ActivityResultCallback;
         import androidx.activity.result.ActivityResultLauncher;
         import androidx.activity.result.contract.ActivityResultContracts;
+        import androidx.appcompat.app.AlertDialog;
         import androidx.appcompat.app.AppCompatActivity;
         import androidx.recyclerview.widget.RecyclerView;
 
         import android.annotation.SuppressLint;
+        import android.content.DialogInterface;
         import android.content.Intent;
         import android.os.Bundle;
         import android.view.View;
@@ -36,9 +38,10 @@ public class MainActivity extends AppCompatActivity {
                 String title = intent.getExtras().getString("note_title");
                 String description = intent.getExtras().getString("note_description");
                 String category = intent.getExtras().getString("note_category");
+                Integer color = intent.getExtras().getInt("note_color");
                 Toast.makeText(MainActivity.this, "Title :" + title + " Description :" + description  , Toast.LENGTH_SHORT).show();
 
-                Note note = new Note(title,description,category);
+                Note note = new Note(title,description,category,color);
                 adapter.addData(note);
 
                 dbHelper.addNote(note);
@@ -80,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("tvTitle",note.getTitle());
                 intent.putExtra("tvDescription",note.getDes());
                 intent.putExtra("tvCategory",note.getCategory());
+//                intent.putExtra("color",note.getColor());
                 startActivity(intent);
             }
 
@@ -90,11 +94,23 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onNoteDelete(Note note) {
-//                new AlertDialog.Builder(note)
-//                        .setTitle("Delete entry")
-//                        .setMessage("Are you sure you want to delete this entry?")
+                AlertDialog.Builder builder= new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("Do you want to Delete?");
+                builder.setTitle("Alert!!!");
+                builder.setCancelable(true);
+                builder.setCancelable(true);
+                builder.setPositiveButton("Yes",(DialogInterface.OnClickListener)(dialog,which)->{
+
+                });
+                builder.setNegativeButton("No",(DialogInterface.OnClickListener)(dialog,which)->{
+                    dialog.cancel();
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
             }
         });
+
         rv.setAdapter(adapter);
 
         btnAddNote.setOnClickListener(new View.OnClickListener() {

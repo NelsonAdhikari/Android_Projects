@@ -25,6 +25,13 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesHolder>
         notifyItemInserted(notes.size());
     }
 
+    public void deleteNote(Note note){
+        Integer index= notes.indexOf(note);
+        notes.remove(index);
+        notifyItemChanged(0,notes.size());
+    }
+
+
 
     @NonNull
     @Override
@@ -63,6 +70,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesHolder>
             title.setText(note.getTitle());
             description.setText(note.getDes());
             category.setText(note.getCategory());
+            itemView.setBackgroundColor(note.getColor());
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -71,6 +79,13 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesHolder>
                 }
             });
 
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    noteListener.onNoteDelete(note);
+                    return false;
+                }
+            });
 
         }
 

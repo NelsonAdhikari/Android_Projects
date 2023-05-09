@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.aadim.classroom.R;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -30,7 +31,9 @@ public class AddNotesActivity extends AppCompatActivity {
 
     RecyclerView rvcolor;
 
-    int selected_color= android.R.color.white;
+    MaterialButton toolbar;
+
+    Integer selectedColor = Color.WHITE;
 
 
     @Override
@@ -43,6 +46,7 @@ public class AddNotesActivity extends AppCompatActivity {
         editDescriptiion = findViewById(R.id.edit_note_description);
         addNotes = findViewById(R.id.add_note);
         rvcolor=findViewById(R.id.color_list);
+        toolbar=findViewById(R.id.add_notes_toolbar_id);
 
         ArrayList<Integer> colors = new ArrayList<Integer>();
         for(int i=0; i<50; i++){

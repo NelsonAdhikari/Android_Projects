@@ -8,6 +8,11 @@
     android:layout_margin="20dp"
     tools:context=".notebook.AddNotesActivity">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_notes_toolbar_id"/>
+
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -15,12 +20,15 @@
         android:layout_below="@+id/edit_note_title"
         android:background="@drawable/rounded_corner"
         android:padding="16dp"
+
         android:layout_marginTop="12sp"
         />
 
     <EditText
+        android:fontFamily="@font/roboto_black"
         android:id="@+id/edit_note_title"
         android:layout_width="match_parent"
+        android:layout_below="@id/add_notes_toolbar_id"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:hint="Title"

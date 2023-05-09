@@ -3,10 +3,22 @@ package com.aadim.classroom.notebook;
 import android.graphics.Color;
 
 public class Note {
+    public Note(String title, String des, String category, Integer color, Long id) {
+        this.title = title;
+        this.des = des;
+        this.category = category;
+        this.color = color;
+        this.id = id;
+    }
+
     String title;
     String des;
     String category;
     Integer color;
+
+
+
+    Long id;
 
     public Note(String title, String des, String category, Integer Color) {
         this.title = title;
@@ -37,5 +49,9 @@ public class Note {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public Integer getColor() {
+        return color;
     }
 }
